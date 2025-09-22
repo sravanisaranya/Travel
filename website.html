@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wanderly — Travel Adventures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#0072ff;
+      --muted:#6b7280;
+      --card-bg: rgba(255,255,255,0.9);
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background: linear-gradient(180deg,#f7fbff 0%, #eef6ff 100%);
+      color:#102a43;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 28px;
+      max-width:1200px;
+      margin:20px auto 0;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background: linear-gradient(135deg, #00c6ff, var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(0,114,255,0.18);
+    }
+    nav a{
+      margin-left:18px;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+    }
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(0,114,255,0.12);
+    }
+
+    /* Hero */
+    .hero{
+      max-width:1200px;
+      margin:18px auto;
+      background: url('https://source.unsplash.com/1600x900/?beach,ocean,sunrise') center/cover no-repeat;
+      height:420px;
+      display:flex;
+      align-items:center;
+      border-radius:16px;
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 12px 30px rgba(2,6,23,0.08);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.02) 60%);
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      color:white;
+      padding:36px;
+      max-width:620px;
+    }
+    .hero h1{margin:0 0 10px;font-size:36px;line-height:1.05}
+    .hero p{margin:0 0 18px;color:rgba(255,255,255,0.92);font-weight:500}
+
+    .search-card{
+      position:absolute;
+      right:20px;
+      bottom:-28px;
+      background:var(--card-bg);
+      padding:16px;
+      border-radius:12px;
+      width:360px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.07);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      z-index:3;
+    }
+    .search-card input, .search-card select{
+      flex:1;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #e6eefc;
+      font-size:14px;
+    }
+    .search-card button{
+      background:var(--accent);
+      color:white;
+      padding:10px 14px;
+      border-radius:8px;
+      border:none;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    /* Main content */
+    main{max-width:1200px;margin:60px auto;padding:0 18px;display:grid;grid-template-columns:1fr 340px;gap:28px;}
+
+    /* Featured cards */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+    .card{
+      border-radius:12px;
+      overflow:hidden;
+      background:white;
+      box-shadow:0 8px 26px rgba(2,6,23,0.05);
+      display:flex;
+      flex-direction:column;
+    }
+    .card img{width:100%;height:180px;object-fit:cover}
+    .card .body{padding:14px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Sidebar */
+    .sidebar{
+      position:relative;
+    }
+    .info{
+      background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+      padding:16px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(2,6,23,0.04);
+    }
+    .info h4{margin:0 0 8px}
+    .info p{color:var(--muted);font-size:14px}
+
+    /* Gallery */
+    .gallery{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .gallery img{
+      width:100%;
+      height:120px;
+      object-fit:cover;
+      border-radius:8px;
+      display:block;
+    }
+
+    /* Footer */
+    footer{
+      max-width:1200px;
+      margin:40px auto;
+      padding:24px 18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr; padding-bottom:40px}
+      .hero{height:360px}
+      .search-card{position:static;width:auto;margin:16px;border-radius:10px}
+      .cards{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      .hero h1{font-size:26px}
+      .hero p{font-size:14px}
+      header{padding:12px}
+      nav a{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <div style="font-weight:600">Wanderly</div>
+        <div style="font-size:12px;color:var(--muted)">Explore. Dream. Discover.</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#destinations">Destinations</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="#book">Book Trip</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-label="Hero - travel banner">
+    <div class="hero-content">
+      <h1>Find your next adventure</h1>
+      <p>Handpicked destinations, curated itineraries, and travel tips — all in one place.</p>
+      <a class="btn" href="#destinations" style="display:inline-block;margin-top:8px;">Explore Destinations</a>
+    </div>
+
+    <div class="search-card" role="search" aria-label="Quick trip search">
+      <input type="text" placeholder="Where do you want to go?" id="q" />
+      <select id="people">
+        <option>2 people</option>
+        <option>1 person</option>
+        <option>3 people</option>
+        <option>4+ people</option>
+      </select>
+      <button onclick="alert('Search simulated — integrate backend to enable results')">Search</button>
+    </div>
+  </section>
+
+  <main>
+    <section>
+      <h2 id="destinations" style="margin:0 0 12px">Popular Picks</h2>
+
+      <div class="cards">
+        <article class="card">
+          <img src="https://source.unsplash.com/800x600/?bora-bora,overwater" alt="Overwater bungalows in Bora Bora">
+          <div class="body">
+            <h3>Romantic Escape — Bora Bora</h3>
+            <p>Overwater villas, crystal lagoons and private sunsets. Perfect for couples and honeymoons.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://source.unsplash.com/800x600/?mountain,trekking" alt="Mountain landscape">
+          <div class="body">
+            <h3>Highland Adventure — Alps & Himalaya</h3>
+            <p>Hiking trails, alpine villages, and the crisp mountain air. Trails for all levels.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://source.unsplash.com/800x600/?city,night" alt="City skyline at night">
+          <div class="body">
+            <h3>City Breaks — Global Cities</h3>
+            <p>Food markets, nightlife and cultural hotspots. Quick getaways that feel grand.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://source.unsplash.com/800x600/?island,beach" alt="Secluded island beach">
+          <div class="body">
+            <h3>Island Hopping — Tropical Isles</h3>
+            <p>Secluded beaches, snorkeling, and slow island life. Recharge and reset.</p>
+          </div>
+        </article>
+      </div>
+
+      <h2 style="margin-top:24px">Gallery</h2>
+      <div id="gallery" class="gallery" aria-live="polite">
+        <img src="https://source.unsplash.com/800x600/?beach,turquoise" alt="Tropical beach">
+        <img src="https://source.unsplash.com/800x600/?mountain,peak" alt="Mountain peak">
+        <img src="https://source.unsplash.com/800x600/?city,landmark" alt="City landmark">
+        <img src="https://source.unsplash.com/800x600/?forest,waterfall" alt="Forest waterfall">
+        <img src="https://source.unsplash.com/800x600/?desert,dunes" alt="Desert dunes">
+        <img src="https://source.unsplash.com/800x600/?island,sunset" alt="Island sunset">
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="info" id="book" aria-label="Booking info">
+        <h4>Start your booking</h4>
+        <p>Need help planning? Drop your email and we'll send curated packages and deals.</p>
+
+        <form id="contactForm" onsubmit="submitForm(event)" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <input type="text" id="name" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid #e7eefc" />
+          <input type="email" id="email" placeholder="Email address" required style="padding:10px;border-radius:8px;border:1px solid #e7eefc" />
+          <button type="submit" class="btn">Get Deals</button>
+        </form>
+      </div>
+
+      <div style="height:16px"></div>
+
+      <div class="info" aria-label="Travel tip">
+        <h4>Travel Tip</h4>
+        <p>Always check local entry rules and travel advisories before booking. Pack a reusable water bottle and a lightweight rain layer — climates change fast!</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer id="contact">
+    <div style="max-width:1200px;margin:0 auto;padding:8px 18px">
+      <strong>Wanderly</strong> · Inspiring journeys since 2025 · <span style="color:var(--muted)">Made with ❤</span>
+      <div style="margin-top:10px;color:var(--muted)">Questions? Email: <a href="mailto:hello@wanderly.example">hello@wanderly.example</a></div>
+    </div>
+  </footer>
+
+  <script>
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if(!name || !email){ alert('Please provide name and email'); return; }
+      // This is a demo. Replace with a real POST to your backend.
+      alert('Thanks ' + name + '! We will send deals to ' + email + '. (Demo only)');
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+</body>
+</html>

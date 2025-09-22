@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Vibes 🌍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: url("https://source.unsplash.com/1600x900/?travel,beach,mountain") no-repeat center center/cover;
+      position: relative;
+      color: white;
+    }
+
+    /* Dark overlay for readability */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 0;
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px;
+    }
+
+    header h1 {
+      font-size: 40px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 18px;
+      margin: 8px 0 0;
+      opacity: 0.9;
+    }
+
+    .content-box {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.85);
+      padding: 30px;
+      border-radius: 12px;
+      color: #2c3e50;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .content-box h2 {
+      margin-bottom: 15px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Time to Travel 🌍</h1>
+    <p>Discover places, create memories, live the adventure</p>
+  </header>
+
+  <main>
+    <div class="content-box">
+      <h2>Explore Destinations</h2>
+      <p>From serene beaches to towering mountains, every destination has a story. 
+      Let your journey begin here.</p>
+
+      <div class="gallery">
+        <img src="https://source.unsplash.com/600x400/?beach" alt="Beach">
+        <img src="https://source.unsplash.com/600x400/?mountain" alt="Mountain">
+        <img src="https://source.unsplash.com/600x400/?city" alt="City">
+        <img src="https://source.unsplash.com/600x400/?island" alt="Island">
+        <img src="https://source.unsplash.com/600x400/?desert" alt="Desert">
+        <img src="https://source.unsplash.com/600x400/?forest" alt="Forest">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Travel Vibes | Designed with ❤️
+  </footer>
+
+</body>
+</html>
